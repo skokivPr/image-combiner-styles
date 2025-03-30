@@ -113,19 +113,19 @@ function addImagePreview(src, name) {
     const position = imagePreview.children.length + 1;
 
     previewItem.innerHTML = `
-                <div class="position-number">${position}</div>
-                <img src="${src}" alt="${name}">
-                <div class="preview-description">
-                    <input type="text" placeholder="Dodaj opis..." value="${name}">
-                    <div class="temp-description"></div>
-                </div>
-                <div class="zoom-icon" onclick="openModal('${src}')">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <button class="remove-btn" onclick="removeImage(this)">
-                    <i class="bi bi-x"></i>
-                </button>
-            `;
+        <div class="position-number">${position}</div>
+        <img src="${src}" alt="${name}">
+        <div class="preview-description">
+            <input type="text" placeholder="Dodaj opis..." value="${name}">
+            <div class="temp-description"></div>
+        </div>
+        <div class="zoom-icon" onclick="openModal('${src}')">
+            <i class="fas fa-eye"></i>
+        </div>
+        <button class="remove-btn" onclick="removeImage(this)">
+            <i class="bi bi-x"></i>
+        </button>
+    `;
 
     const descriptionInput = previewItem.querySelector(".preview-description input");
     descriptionInput.addEventListener("input", (e) => {
@@ -313,20 +313,20 @@ function updateNumberingPanel() {
         const numberingItem = document.createElement("div");
         numberingItem.className = "numbering-item";
         numberingItem.innerHTML = `
-                    <div class="numbering-item-header">
-                        <div class="numbering-item-number">${index + 1}</div>
-                    </div>
-                    <div class="numbering-item-preview">
-                        <img src="${img.src}" alt="Podgląd">
-                        <button class="numbering-preview-btn" onclick="openModal('${img.src}')">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                    <textarea class="numbering-item-input" 
-                        data-index="${index}" 
-                        placeholder="Dodaj opis..." 
-                        rows="3">${currentDescription}</textarea>
-                `;
+            <div class="numbering-item-header">
+                <div class="numbering-item-number">${index + 1}</div>
+            </div>
+            <div class="numbering-item-preview">
+                <img src="${img.src}" alt="Podgląd">
+                <button class="numbering-preview-btn" onclick="openModal('${img.src}')">
+                    <i class="fas fa-eye"></i>
+                </button>
+            </div>
+            <textarea class="numbering-item-input" 
+                data-index="${index}" 
+                placeholder="Dodaj opis..." 
+                rows="3">${currentDescription}</textarea>
+        `;
 
         const textarea = numberingItem.querySelector(".numbering-item-input");
         if (textarea) {
@@ -390,4 +390,4 @@ if (savedTheme) {
     themeToggleButton.innerHTML = savedTheme === "dark" ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
 } else {
     localStorage.setItem("theme", "light");
-}
+} 
