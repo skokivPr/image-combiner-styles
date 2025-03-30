@@ -81,13 +81,6 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: #000000;
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
