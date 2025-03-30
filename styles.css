@@ -1,0 +1,345 @@
+/* Image Combiner Pro - Styles
+ * Version: 1.0.0
+ * Author: Your Name
+ * GitHub: https://github.com/yourusername
+ */
+
+:root {
+  /* Colors */
+  --primary-color: #4caf50;
+  --green: #4caf50;
+  --green-hover: #45a049;
+  --red: #f44336;
+  --red-hover: #da190b;
+  --orange-hover: #ff9800;
+  --text-color: #333;
+  --text-dark: #000;
+  --background-color: #ffffff;
+  --border-color: #ddd;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+
+  /* Gradients */
+  --primary-gradient: linear-gradient(135deg, #4caf50, #45a049);
+  --red-gradient: linear-gradient(135deg, #f44336, #da190b);
+  --background-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --background-gradient-main: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  --btn-gradient-hover: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.1)
+  );
+
+  /* Background Images */
+  --background-image-pasy: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234CAF50" fill-opacity="0.1"/><path d="M0 0h100v2H0z" fill="%234CAF50" fill-opacity="0.2"/></svg>');
+}
+
+[data-theme="dark"] {
+  --primary-color: #4caf50;
+  --green: #4caf50;
+  --green-hover: #45a049;
+  --red: #f44336;
+  --red-hover: #da190b;
+  --orange-hover: #ff9800;
+  --text-color: #fff;
+  --text-dark: #fff;
+  --background-color: #1a1a1a;
+  --border-color: #333;
+  --glass-bg: rgba(0, 0, 0, 0.2);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.4);
+  --background-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%);
+  --background-image-pasy: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234CAF50" fill-opacity="0.05"/><path d="M0 0h100v2H0z" fill="%234CAF50" fill-opacity="0.1"/></svg>');
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background-gradient);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Layout */
+.main-wrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 0.5rem;
+  min-height: calc(100vh - 4rem);
+  margin: 0 auto;
+}
+
+.container {
+  flex: 1;
+  height: calc(100vh - 4rem);
+  position: sticky;
+  background-color: var(--background-color);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--box-shadow);
+  overflow-y: auto;
+  background-image: var(--background-image-pasy);
+  background-size: 100% 0.5%, contain;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.header h1 {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.header h1 .fas {
+  font-size: 2.5rem;
+  margin-right: 0.75rem;
+}
+
+.header p {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Drop Zone */
+.drop-zone {
+  border: 2px dashed var(--border-color);
+  border-radius: 16px;
+  padding: 1rem;
+  text-align: center;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  width: 50%;
+  margin: 1rem auto;
+  position: relative;
+  z-index: 1;
+}
+
+.drop-zone:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--green-hover);
+}
+
+.drop-zone.dragover {
+  border-color: var(--primary-color);
+  background: var(--glass-bg);
+}
+
+.drop-zone i {
+  font-size: 4rem;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+/* Image Preview */
+.image-preview {
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--box-shadow);
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.image-preview:not(:empty) {
+  display: grid;
+}
+
+.preview-item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow), var(--box-shadow);
+  cursor: move;
+  user-select: none;
+  transition: all 0.3s ease;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border: var(--glass-border);
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-item.dragging {
+  opacity: 0.9;
+  box-shadow: var(--shadow-hover);
+}
+
+.preview-item:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.preview-item.drag-over {
+  border: 2px dashed var(--primary-color);
+}
+
+.preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  transition: all 0.3s ease;
+  filter: blur(0);
+  flex: 1;
+}
+
+.preview-item:hover img {
+  filter: blur(3px);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--green);
+  background-image: var(--background-gradient-main);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow), var(--box-shadow);
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  width: 5rem;
+  height: 5rem;
+}
+
+.btn-primary:hover {
+  background-color: var(--green-hover);
+  box-shadow: var(--shadow-hover);
+  color: var(--background-color);
+}
+
+.btn-secondary {
+  background-color: var(--red);
+  background-image: var(--background-gradient-main);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow), var(--box-shadow);
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  width: 5rem;
+  height: 5rem;
+}
+
+.btn-secondary:hover {
+  background-color: var(--red-hover);
+  box-shadow: var(--shadow-hover);
+  color: var(--background-color);
+}
+
+/* Theme Toggle */
+button-theme {
+  background-image: var(--background-gradient-main);
+  backdrop-filter: blur(8px);
+  border: var(--glass-border);
+  color: var(--text-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--glass-shadow), var(--box-shadow);
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  overflow: hidden;
+}
+
+button-theme:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .main-wrapper {
+    flex-direction: column;
+    padding: 0.5rem;
+    margin-bottom: 80px;
+  }
+
+  .container,
+  .result-container {
+    max-width: 100%;
+    height: auto;
+    position: static;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .controls {
+    bottom: 0.5rem;
+    padding: 0.4rem;
+  }
+
+  .menu {
+    bottom: 0.5rem;
+    left: 0.5rem;
+  }
+
+  .main-wrapper {
+    margin-bottom: 70px;
+  }
+
+  .preview-item {
+    padding-bottom: 30px;
+  }
+}
